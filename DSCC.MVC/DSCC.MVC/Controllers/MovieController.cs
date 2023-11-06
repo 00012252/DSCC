@@ -31,7 +31,7 @@ namespace DSCC.MVC.Controllers
         {
             var movies = new List<Movie>();
             HeaderClearing();
-            HttpResponseMessage httpResponseMessage = await _client.GetAsync("api/Movie");
+            HttpResponseMessage httpResponseMessage = await _client.GetAsync("api/Movies");
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -46,7 +46,7 @@ namespace DSCC.MVC.Controllers
             Movie movie = new Movie();
             HeaderClearing();
 
-            HttpResponseMessage httpResponseMessage = await _client.GetAsync($"api/Movie/{id}");
+            HttpResponseMessage httpResponseMessage = await _client.GetAsync($"api/Movies/{id}");
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -73,7 +73,7 @@ namespace DSCC.MVC.Controllers
             {
                 string createGenreInfo = JsonConvert.SerializeObject(movie);
                 StringContent stringContentInfo = new StringContent(createGenreInfo, Encoding.UTF8, "application/json");
-                HttpResponseMessage createHttpResponseMessage = _client.PostAsync(_client.BaseAddress + "api/Movie", stringContentInfo).Result;
+                HttpResponseMessage createHttpResponseMessage = _client.PostAsync(_client.BaseAddress + "api/Movies", stringContentInfo).Result;
                 if (createHttpResponseMessage.IsSuccessStatusCode)
                 {
                     return RedirectToAction(nameof(Index));
@@ -88,7 +88,7 @@ namespace DSCC.MVC.Controllers
             Movie movie = new Movie();
             HeaderClearing();
 
-            HttpResponseMessage httpResponseMessage = await _client.GetAsync($"api/Movie/{id}");
+            HttpResponseMessage httpResponseMessage = await _client.GetAsync($"api/Movies/{id}");
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -108,7 +108,7 @@ namespace DSCC.MVC.Controllers
             {
                 string createSubjectInfo = JsonConvert.SerializeObject(movie);
                 StringContent stringContentInfo = new StringContent(createSubjectInfo, Encoding.UTF8, "application/json");
-                HttpResponseMessage editHttpResponseMessage = _client.PutAsync(_client.BaseAddress + $"api/Movie/{id}", stringContentInfo).Result;
+                HttpResponseMessage editHttpResponseMessage = _client.PutAsync(_client.BaseAddress + $"api/Movies/{id}", stringContentInfo).Result;
                 if (editHttpResponseMessage.IsSuccessStatusCode)
                 {
                     return RedirectToAction(nameof(Index));
@@ -123,7 +123,7 @@ namespace DSCC.MVC.Controllers
             Movie movie = new Movie();
             HeaderClearing();
 
-            HttpResponseMessage httpResponseMessage = await _client.GetAsync($"api/Movie/{id}");
+            HttpResponseMessage httpResponseMessage = await _client.GetAsync($"api/Movies/{id}");
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -138,7 +138,7 @@ namespace DSCC.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Movie subject)
         {
-            HttpResponseMessage deleteSubjectHttpResponseMessage = _client.DeleteAsync(_client.BaseAddress + $"api/Movie/{id}").Result;
+            HttpResponseMessage deleteSubjectHttpResponseMessage = _client.DeleteAsync(_client.BaseAddress + $"api/Movies/{id}").Result;
             if (deleteSubjectHttpResponseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
