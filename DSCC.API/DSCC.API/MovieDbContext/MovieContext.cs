@@ -1,12 +1,12 @@
-﻿using DSCC.API.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using DSCC.API.Models;
 
-namespace DSCC.API.MoviesDbContext
+namespace DSCC.API.MovieDbContext
+
 {
     public class MovieContext : DbContext
     {
         public MovieContext(DbContextOptions<MovieContext> options) : base(options) { Database.EnsureCreated(); }
-
         public DbSet<Movie> Movies { get; set; }
     }
 }
