@@ -2,10 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using DSCC.API.MovieDbContext;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<MovieContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MovieDatabase") ?? throw new InvalidOperationException("Connection string 'MovieDatabase' not found.")));
 
 // Add services to the container.
+builder.Services.AddDbContext<MovieContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("MovieDatabase")
+    ));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
