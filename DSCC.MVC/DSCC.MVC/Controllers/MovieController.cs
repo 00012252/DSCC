@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace DSCC_MVC_12252.Controllers
+namespace DSCC.MVC.Controllers
 {
     public class MovieController : Controller
     {
