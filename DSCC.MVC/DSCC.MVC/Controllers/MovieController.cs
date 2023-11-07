@@ -8,7 +8,7 @@ namespace DSCC.MVC.Controllers
 {
     public class MovieController : Controller
     {
-        private const string BASE_URL = "https://localhost:44361/";  // The base URL of the API
+        private const string BASE_URL = "http://ec2-107-22-147-166.compute-1.amazonaws.com/";  // The base URL of the API
         private readonly Uri ClientBasAddress = new Uri(BASE_URL);  // The base address for the API client
         private readonly HttpClient _client; // HTTP client for making API requests
 
